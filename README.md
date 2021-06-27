@@ -1,0 +1,15 @@
+# microurl
+    -- Dockerfile
+    -- microurl-core
+         -- Dockerfile
+         -- springboot application
+    -- microurl-auth
+         -- Dockerfile
+         -- php application
+    -- microurl-web
+         -- Dockerfile
+         -- php/html/css/javascript application
+    -- microurl-mongodb
+         -- Dockerfile
+    -- microurl-mysql
+         -- Dockerfile
