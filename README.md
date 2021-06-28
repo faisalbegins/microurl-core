@@ -1,15 +1,5 @@
 # microurl
-    -- Dockerfile
-    -- microurl-core
-         -- Dockerfile
-         -- springboot application
-    -- microurl-auth
-         -- Dockerfile
-         -- php application
-    -- microurl-web
-         -- Dockerfile
-         -- php/html/css/javascript application
-    -- microurl-mongodb
-         -- Dockerfile
-    -- microurl-mysql
-         -- Dockerfile
+1. microurl-core => Spring boot application. there is a Dockerfile inside the directory to build image
+2. microurl-auth => auth related services
+3. microurl-web => web application for end users
+4. docker-compose.yml => include all the images of applications and dbs (mysql, mongodb) inside this 
