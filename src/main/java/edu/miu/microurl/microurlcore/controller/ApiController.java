@@ -8,6 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @RestController
@@ -21,9 +24,12 @@ public class ApiController {
         this.service = service;
     }
 
-    @GetMapping("/urls")
-    public List<UrlMetaData> urls() {
-        return service.listAllUrls();
+    @GetMapping("/urls/{userId}")
+    public List<UrlMetaData> urls(@PathVariable @NotBlank Long userId,
+                                  @RequestParam(defaultValue = "0") @Min(0) int page,
+                                  @RequestParam(defaultValue = "5") @Max(10) int size) {
+        logger.debug("request for url list for user id: [{}] from: [{}] count [{}]", userId, page, size);
+        return service.listAllUrlsByUser(userId, page, size);
     }
 
     @PostMapping("/url")
