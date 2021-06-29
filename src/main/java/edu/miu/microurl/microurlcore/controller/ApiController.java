@@ -1,20 +1,34 @@
 package edu.miu.microurl.microurlcore.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import edu.miu.microurl.microurlcore.dto.CreateUrlRequest;
+import edu.miu.microurl.microurlcore.model.UrlMetaData;
+import edu.miu.microurl.microurlcore.service.UrlService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class ApiController {
+    private final UrlService service;
+    Logger logger = LoggerFactory.getLogger(ApiController.class);
 
-    @GetMapping("/urls")
-    public String urls() {
-        return "list all the urls";
+    @Autowired
+    public ApiController(UrlService service) {
+        this.service = service;
     }
 
-    @GetMapping("/test")
-    public String test() {
-        return "this is test";
+    @GetMapping("/urls")
+    public List<UrlMetaData> urls() {
+        return service.listAllUrls();
+    }
+
+    @PostMapping("/url")
+    public String url(@RequestBody CreateUrlRequest request) {
+        logger.debug(request.toString());
+        return service.createShortUrlForUser(request);
     }
 }
