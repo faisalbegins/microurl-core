@@ -2,6 +2,7 @@ package edu.miu.microurl.microurlcore.service;
 
 import edu.miu.microurl.common.UrlShortenerUtility;
 import edu.miu.microurl.microurlcore.dto.CreateUrlRequest;
+import edu.miu.microurl.microurlcore.exception.LongUrlNotFoundException;
 import edu.miu.microurl.microurlcore.model.UrlMetaData;
 import edu.miu.microurl.microurlcore.repository.UrlRepository;
 import org.slf4j.Logger;
@@ -25,9 +26,9 @@ public class UrlServiceImpl implements UrlService {
 
     @Override
     public String longUrl(String shortUrl) {
-        logger.debug("getting long url from the database");
+        logger.debug("looking up for short url [{}] in the database", shortUrl);
         Optional<UrlMetaData> meta = repository.findByShortUrl(shortUrl);
-        return meta.orElseThrow(RuntimeException::new).getLongUrl();
+        return meta.orElseThrow(LongUrlNotFoundException::new).getLongUrl();
     }
 
     @Override

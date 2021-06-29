@@ -24,8 +24,9 @@ public class LongUrlController {
 
     @GetMapping("/{shortUrl}")
     public ModelAndView longUrl(@PathVariable("shortUrl") String shortUrl) {
+        logger.debug("getting original long url for the short url [{}]", shortUrl);
         String longUrl = service.longUrl(shortUrl);
-        logger.debug("Redirecting to: " + longUrl);
+        logger.debug("Redirecting to: [{}]", longUrl);
         return new ModelAndView("redirect:" + longUrl);
     }
 }
