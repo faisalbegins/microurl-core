@@ -35,6 +35,12 @@ public class UrlServiceImpl implements UrlService {
     }
 
     @Override
+    public List<UrlMetaData> listAllUrls() {
+        logger.debug("Listing all the URLs for all the Users");
+        return repository.findAll();
+    }
+
+    @Override
     public List<UrlMetaData> listAllUrlsByUser(Long userId, int page, int size) {
         logger.debug("Listing all the URLs for User ID: [{}]", userId);
         return repository.findByUserId(userId, PageRequest.of(page, size)).getContent();

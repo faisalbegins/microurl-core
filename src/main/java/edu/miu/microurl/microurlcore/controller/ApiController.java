@@ -24,6 +24,12 @@ public class ApiController {
         this.service = service;
     }
 
+    @GetMapping("/urls")
+    public List<UrlMetaData> urls() {
+        logger.debug("request for getting all the urls");
+        return service.listAllUrls();
+    }
+
     @GetMapping("/urls/{userId}")
     public List<UrlMetaData> urls(@PathVariable @NotBlank Long userId,
                                   @RequestParam(defaultValue = "0") @Min(0) int page,
