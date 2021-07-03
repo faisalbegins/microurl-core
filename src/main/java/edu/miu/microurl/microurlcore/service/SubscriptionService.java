@@ -5,5 +5,5 @@ import edu.miu.microurl.microurlcore.model.SubscriptionPlan;
 
 
 public interface SubscriptionService  {
-    public Subscription subscribeFreePlan(long userId, SubscriptionPlan subscriptionPlan);
+    public Subscription subscribe(long userId, SubscriptionPlan subscriptionPlan);
 }

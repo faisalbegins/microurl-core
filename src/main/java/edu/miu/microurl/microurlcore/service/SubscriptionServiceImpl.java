@@ -1,7 +1,5 @@
 package edu.miu.microurl.microurlcore.service;
 
-import edu.miu.microurl.common.SubscriptionPlanConstants;
-import edu.miu.microurl.microurlcore.model.FreeSubscriptionPlan;
 import edu.miu.microurl.microurlcore.model.Subscription;
 import edu.miu.microurl.microurlcore.model.SubscriptionPlan;
 import edu.miu.microurl.microurlcore.repository.SubscriptionRepository;
@@ -18,10 +16,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public Subscription subscribeFreePlan(long userId, SubscriptionPlan subscriptionPlan) {
+    public Subscription subscribe(long userId, SubscriptionPlan subscriptionPlan) {
         Subscription subscription = new Subscription();
         subscription.setUserId(userId);
-        subscription.setSubscriptionPlan(new FreeSubscriptionPlan(SubscriptionPlanConstants.FREE_PRICE, SubscriptionPlanConstants.FREE_URL));
+        subscription.setSubscriptionPlan(subscriptionPlan);
         repository.save(subscription);
         return subscription;
     }
