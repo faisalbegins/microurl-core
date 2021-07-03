@@ -1,5 +1,9 @@
 package edu.miu.microurl.microurlcore.service;
 
-//TODO: Implement this Chandan
-public interface SubscriptionService {
+import edu.miu.microurl.microurlcore.model.Subscription;
+import edu.miu.microurl.microurlcore.model.SubscriptionPlan;
+
+
+public interface SubscriptionService  {
+    public Subscription subscribeFreePlan(long userId, SubscriptionPlan subscriptionPlan);
 }

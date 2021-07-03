@@ -1,6 +1,6 @@
 package edu.miu.microurl.microurlcore.model;
 
-abstract class SubscriptionPlan {
+public abstract class SubscriptionPlan {
     protected double price;
     protected int restriction;
 
