@@ -1,6 +1,7 @@
 package edu.miu.microurl.microurlcore.model;
 
 public class DebitCard extends PaymentMethod{
+
     private int cardNumber;
     public CardType cardType;
 
@@ -8,11 +9,16 @@ public class DebitCard extends PaymentMethod{
         this.cardNumber = cardNumber;
         this.cardType = cardType;
     }
+    public int getCardNumber() {
+        return cardNumber;
+    }
 
     public void setCardNumber(int cardNumber) {
         this.cardNumber = cardNumber;
     }
-
+    public CardType getCardType() {
+        return cardType;
+    }
     public void setCardType(CardType cardType) {
         this.cardType = cardType;
     }
