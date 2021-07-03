@@ -1,7 +1,7 @@
 package edu.miu.microurl.microurlcore.model;
 
 abstract class PaidSubscriptionPlan extends SubscriptionPlan {
-    public PaidSubscriptionPlan(Double price, Integer restriction) {
+    public PaidSubscriptionPlan(double price, int restriction) {
         super(price, restriction);
     }
 }
