@@ -3,6 +3,7 @@ package edu.miu.microurl.microurlcore.model;
 import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class UrlMetaData {
     @Id
@@ -68,5 +69,18 @@ public class UrlMetaData {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UrlMetaData metaData = (UrlMetaData) o;
+        return Objects.equals(id, metaData.id) && Objects.equals(userId, metaData.userId) && Objects.equals(email, metaData.email) && Objects.equals(longUrl, metaData.longUrl) && Objects.equals(shortUrl, metaData.shortUrl) && Objects.equals(expireDate, metaData.expireDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userId, email, longUrl, shortUrl, expireDate);
     }
 }
