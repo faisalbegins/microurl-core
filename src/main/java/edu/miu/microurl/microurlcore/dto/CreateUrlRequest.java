@@ -2,13 +2,17 @@ package edu.miu.microurl.microurlcore.dto;
 
 import edu.miu.microurl.microurlcore.model.UrlMetaData;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 public class CreateUrlRequest {
     private Long userId;
+    @Email
     private String email;
+    @NotBlank
     private String longUrl;
     private Long expireDate;
 

@@ -8,13 +8,14 @@ import edu.miu.microurl.microurlcore.service.UrlService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/api")
 public class ApiController {
@@ -44,7 +45,7 @@ public class ApiController {
     }
 
     @GetMapping("/urls/{userId}")
-    public List<UrlMetaData> urls(@PathVariable @NotBlank Long userId,
+    public List<UrlMetaData> urls(@PathVariable Long userId,
                                   @RequestParam(defaultValue = "0") @Min(0) int page,
                                   @RequestParam(defaultValue = "5") @Max(10) int size) {
         logger.debug("request for url list for user id: [{}] from: [{}] count [{}]", userId, page, size);
