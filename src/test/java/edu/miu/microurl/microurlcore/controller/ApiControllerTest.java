@@ -5,7 +5,6 @@ import edu.miu.microurl.microurlcore.dto.CreateUrlRequest;
 import edu.miu.microurl.microurlcore.model.*;
 import edu.miu.microurl.microurlcore.service.SubscriptionService;
 import edu.miu.microurl.microurlcore.service.UrlService;
-import edu.miu.microurl.microurlcore.service.UrlServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
