@@ -1,8 +1,8 @@
 package edu.miu.microurl.microurlcore.controller;
 
+import edu.miu.microurl.common.SubscriptionPlanConstants;
 import edu.miu.microurl.microurlcore.dto.CreateUrlRequest;
-import edu.miu.microurl.microurlcore.model.Subscription;
-import edu.miu.microurl.microurlcore.model.UrlMetaData;
+import edu.miu.microurl.microurlcore.model.*;
 import edu.miu.microurl.microurlcore.service.SubscriptionService;
 import edu.miu.microurl.microurlcore.service.UrlService;
 import edu.miu.microurl.microurlcore.service.UrlServiceImpl;
@@ -37,6 +37,27 @@ public class ApiControllerTest {
     void init() {
         controller = new ApiController(urlService, subscriptionService);
         longUrlController = new LongUrlController(urlService);
+    }
+
+    @Test
+    void basicSubscriptionPlanTest() {
+        SubscriptionPlan plan = new BasicPaidSubscriptionPlan(2, 20);
+        assertEquals(plan.getPrice(), SubscriptionPlanConstants.BASIC_PAID_PRICE);
+        assertEquals(plan.getRestriction(), SubscriptionPlanConstants.BASIC_PAID_URL);
+    }
+
+    @Test
+    void proSubscriptionPlanTest() {
+        SubscriptionPlan plan = new ProPaidSubscriptionPlan(5, 50);
+        assertEquals(plan.getPrice(), SubscriptionPlanConstants.PRO_PAID_PRICE);
+        assertEquals(plan.getRestriction(), SubscriptionPlanConstants.PRO_PAID_URL);
+    }
+
+    @Test
+    void ultimateSubscriptionPlanTest() {
+        SubscriptionPlan plan = new ProPaidSubscriptionPlan(10, 100);
+        assertEquals(plan.getPrice(), SubscriptionPlanConstants.ULT_PAID_PRICE);
+        assertEquals(plan.getRestriction(), SubscriptionPlanConstants.ULT_PAID_URL);
     }
 
     @Test
